@@ -20,9 +20,15 @@ trait HasRoleTrait
                     ->where("$pivotTable.related", $roleModel);
     }
 
-    public function hasRole(string $role): bool
+    public function hasRole(int|string $role): bool
     {
-        return in_array($role, $this->getRoles('id'));
+        $roles = $this->getRoles();
+
+        if (is_numeric($role)) {
+            return isset($roles[(int) $role]);
+        }
+
+        return collect($roles)->contains('name', $role);
     }
 
     public function getRoles(?string $pluck = null): array

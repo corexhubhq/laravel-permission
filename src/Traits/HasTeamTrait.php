@@ -20,9 +20,15 @@ trait HasTeamTrait
                     ->where("$pivotTable.related", $teamModel);
     }
 
-    public function hasTeam(string $team): bool
+    public function hasTeam(int|string $team): bool
     {
-        return in_array($team, $this->getTeams('id'));
+        $teams = $this->getTeams();
+
+        if (is_numeric($team)) {
+            return isset($teams[(int) $team]);
+        }
+
+        return collect($teams)->contains('name', $team);
     }
 
     public function getTeams(?string $pluck = null): array
