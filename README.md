@@ -1,6 +1,6 @@
 # corexhubhq/laravel-permission
 
-Role, team and permission management for Laravel 11+.
+Role, team and permission management for Laravel 11, 12 and 13.
 
 ## Features
 
@@ -21,6 +21,17 @@ Role, team and permission management for Laravel 11+.
 composer require corexhubhq/laravel-permission
 
 composer update corexhubhq/laravel-permission --no-interaction 2>&1
+```
+
+**From the private GitHub repository** (internal use, pin a release tag):
+```json
+// composer.json
+"repositories": [
+    { "type": "vcs", "url": "https://github.com/corexhubhq/laravel-permission" }
+],
+"require": {
+    "corexhubhq/laravel-permission": "^1.1"
+}
 ```
 
 **From a local path** (monorepo / development):
